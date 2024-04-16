@@ -13,18 +13,14 @@ pipeline {
             }
             post {
                 success{
-                    emailext attachLog: false,
-                    body: 'Unit and Integration Tests Status', 
-                    subject: 'Unit and Integration Tests has Passed', 
-                    from: "jenkins@jenkins.com", 
-                    to: 'pratik.khadka18@gmail.com'
+                    mail to: 'pratik.khadka18@gmail.com',
+                    subject: "Unit and Integration Test",
+                    body: "Unit and Integration Tests Completed Successfully"
                 }
                 failure{
-                    emailext attachLog: false,
-                    body: 'Unit and Integration Tests Status', 
-                    subject: 'Unit and Integration Tests has Failed',
-                    from: "jenkins@jenkins.com", 
-                    to: 'pratik.khadka18@gmail.com'
+                    mail to: 'pratik.khadka18@gmail.com',
+                    subject: "Unit and Integration Test",
+                    body: "Unit and Integration Tests Failed"
                 }
             }
         }
@@ -43,18 +39,14 @@ pipeline {
             }
             post {
                 success{
-                    emailext attachLog: false,
-                    body: 'Security Scan', 
-                    subject: 'Security Scan has Passed', 
-                    from: "jenkins@jenkins.com", 
-                    to: 'pratik.khadka18@gmail.com'
+                    mail to: 'pratik.khadka18@gmail.com',
+                    subject: "Security Scan",
+                    body: "Security Scan Completed Successfully"
                 }
                 failure{
-                    emailext attachLog: false,
-                    body: 'Security Scan', 
-                    subject: 'Security Scan has Failed', 
-                    from: "jenkins@jenkins.com", 
-                    to: 'pratik.khadka18@gmail.com'
+                    mail to: 'pratik.khadka18@gmail.com',
+                    subject: "Security Scan",
+                    body: "Security Scan Failed"
                 }
             }
         }
