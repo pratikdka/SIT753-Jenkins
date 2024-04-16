@@ -1,44 +1,70 @@
-pipeline{
+pipeline {
     agent any
-    environment {
-        DIRECTORY_PATH = "/path/to/directory"
-        TESTING_ENVIRONMENT = "Testing Environment"
-        PRODUCTION_ENVIRONMENT = "Generic_Pipeline_Jenkins"
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Building the project using Maven as building tool...'     
+                }
+            }
+        }
+
+        stage('Unit and Integration Tests') {
+            steps {
+                script {
+                    echo 'Running unit and integration tests using Maven JUnit tests...'
+                }
+            }
+        }
+
+        stage('Code Analysis') {
+            steps {
+                script {    
+                    echo 'Analyzing code quality using SonarQube for code Quality Analysis...'
+                }
+            }
+        }
+
+        stage('Security Scan') {
+            steps {
+                script {
+                    echo 'Performing security scan using OWASP for Dependency Check...'
+                }
+            }
+        }
+
+        stage('Deploy to Staging') {
+            steps {
+                script {
+                    echo 'Deploying to staging environment via shell script for AWS CLI...'
+                }
+            }
+        }
+
+        stage('Integration Tests on Staging') {
+            steps {
+                script {
+                    echo 'Running integration tests on staging...'
+                }
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                script {
+                    echo 'Deploying to production server using AWS CLI...'
+                }
+            }
+        }
     }
-    stages{
-        stage('Build'){
-            steps{
-                echo "Fetching the source code from the directory path specified by the environment variable: $DIRECTORY_PATH"
-                echo "Compiling the code and generating any necessary artifacts.."
-            }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully.'
         }
-        stage('Test'){
-            steps{
-                echo "Running unit tests.."
-                echo "Running integration tests.."
-            }
-        }
-        stage('Code Quality Check'){
-            steps{
-                echo "Checking the quality of the code.."
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo "Deploying the application to a testing environment specified by the environment variable: $TESTING_ENVIRONMENT"
-            }
-        }
-        stage('Approval'){
-            steps{
-                echo "Waiting for manual approval..."
-                sleep time: 10, unit: 'SECONDS'
-                echo "Manual approval received. Continuing the pipeline."
-            }
-        }
-        stage('Deploy to Production'){
-            steps{
-                echo "Deploying the code to the production environment: $PRODUCTION_ENVIRONMENT"
-            }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
