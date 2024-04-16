@@ -1,4 +1,4 @@
-pipeline {
+pipeline{
     agent any
 
     stages {
@@ -43,10 +43,10 @@ pipeline {
                     subject: "Build Success: ${currentBuild.fullDisplayName}",
                     body: "Build Success for Security Scan. Logs Available at: ${env.BUILD_URL}"
                 }
-                failure{
+                failure {
                     mail to: 'pratik.khadka18@gmail.com',
                     subject: "Build Failed: ${currentBuild.fullDisplayName}",
-                    body: "Build has Failed for Security Scan. Logs Available at: ${env.BUILD_URL}",
+                    body: "Build has Failed for Security Scan. Logs Available at: ${env.BUILD_URL}"
                 }
             }
         }
