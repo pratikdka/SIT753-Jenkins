@@ -17,7 +17,7 @@ pipeline {
                     subject: "Build Success: ${currentBuild.fullDisplayName}",
                     body: "Build Success for Unit and Integration Tests. Logs Available at: ${env.BUILD_URL} "
                 }
-                failure{
+                failure {
                     mail to: 'pratik.khadka18@gmail.com',
                     subject: "Build Failed: ${currentBuild.fullDisplayName}",
                     body: "Build has Failed for Unit and Integration Tests. Logs Available at: ${env.BUILD_URL}"
