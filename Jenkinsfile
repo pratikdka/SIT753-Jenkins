@@ -16,10 +16,17 @@ pipeline {
                     echo 'Running unit and integration tests using Maven JUnit tests...'
                 }
                 post {
-                    always{
-                        mail to: "pratik.khadka18@gmail.com",
-                        subject: "Unit and Integration Test Results",
-                        body: "Log has been attached!!"
+                    success {
+                        emailext attachLog: true, 
+                        body: 'Unit and Integration Tests passed successfully.', 
+                        subject: 'Unit and Integration Tests Passed', 
+                        to: 'pratik.khadka18@gmail.com'
+                    }
+                    failure {
+                        emailext attachLog: true,
+                        body: 'Unit and Integration Tests failed. See attached logs.', 
+                        subject: 'Unit and Integration Tests Failed', 
+                        to: 'pratik.khadka18@gmail.com'
                     }
                 }
             }
@@ -39,10 +46,17 @@ pipeline {
                     echo 'Performing security scan using OWASP for Dependency Check...'
                 }
                 post {
-                    always{
-                        mail to: "pratik.khadka18@gmail.com",
-                        subject: "Security Scan Results",
-                        body: "Log has been attached!!"
+                    success {
+                        emailext attachLog: true, 
+                        body: 'Security Scan passed successfully.', 
+                        subject: 'Security Scan Passed', 
+                        to: 'pratik.khadka18@gmail.com'
+                    }
+                    failure {
+                        emailext attachLog: true, 
+                        body: 'Security Scan failed. See attached logs.', 
+                        subject: 'Security Scan Failed', 
+                        to: 'pratik.khadka18@gmail.com'
                     }
                 }
             }
