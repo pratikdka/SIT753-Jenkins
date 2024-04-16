@@ -16,11 +16,10 @@ pipeline {
                     echo 'Running unit and integration tests using Maven JUnit tests...'
                 }
                 post {
-                    success {
-                        body: 'Unit and Integration Tests passed successfully.', subject: 'Unit and Integration Tests Passed', to: 'pratik.khadka18@gmail.com'
-                    }
-                    failure {
-                        body: 'Unit and Integration Tests failed. See attached logs.', subject: 'Unit and Integration Tests Failed', to: 'pratik.khadka18@gmail.com'
+                    always{
+                        to: "pratik.khadka18@gmail.com",
+                        subject: "Unit and Integration Test Results",
+                        body: "Log has been attached!!"
                     }
                 }
             }
@@ -40,11 +39,10 @@ pipeline {
                     echo 'Performing security scan using OWASP for Dependency Check...'
                 }
                 post {
-                    success {
-                        body: 'Security Scan passed successfully.', subject: 'Security Scan Passed', to: 'pratik.khadka18@gmail.com'
-                    }
-                    failure {
-                        body: 'Security Scan failed. See attached logs.', subject: 'Security Scan Failed', to: 'pratik.khadka18@gmail.com'
+                    always{
+                        to: "pratik.khadka18@gmail.com",
+                        subject: "Security Scan Results",
+                        body: "Log has been attached!!"
                     }
                 }
             }
