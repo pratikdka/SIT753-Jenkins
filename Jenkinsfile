@@ -13,16 +13,10 @@ pipeline {
             }
             post {
                 success{
-                    emailext attachLog: true, 
-                    body: 'Unit and Integration Tests Status', 
-                    subject: 'Unit and Integration Tests has Passed', 
-                    to: 'pratik.khadka18@gmail.com'
+                    emailext body: 'Unit and Integration Tests Status', subject: 'Unit and Integration Tests has Passed', to: 'pratik.khadka18@gmail.com'
                 }
                 failure{
-                    emailext attachLog: true, 
-                    body: 'Unit and Integration Tests Status', 
-                    subject: 'Unit and Integration Tests has Failed', 
-                    to: 'pratik.khadka18@gmail.com'
+                    emailext body: 'Unit and Integration Tests Status', subject: 'Unit and Integration Tests has Failed', to: 'pratik.khadka18@gmail.com'
                 }
             }
         }
@@ -41,16 +35,10 @@ pipeline {
             }
             post {
                 success{
-                    emailext attachLog: true, 
-                    body: 'Security Scan', 
-                    subject: 'Security Scan has Passed', 
-                    to: 'pratik.khadka18@gmail.com'
+                    emailext body: 'Security Scan', subject: 'Security Scan has Passed', to: 'pratik.khadka18@gmail.com'
                 }
                 failure{
-                    emailext attachLog: true, 
-                    body: 'Security Scan', 
-                    subject: 'Security Scan has Failed', 
-                    to: 'pratik.khadka18@gmail.com'
+                    emailext body: 'Security Scan', subject: 'Security Scan has Failed', to: 'pratik.khadka18@gmail.com'
                 }
             }
         }
