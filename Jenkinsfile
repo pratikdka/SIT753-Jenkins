@@ -20,12 +20,14 @@ pipeline {
                         emailext attachLog: true, 
                         body: 'Unit and Integration Tests passed successfully.', 
                         subject: 'Unit and Integration Tests Passed', 
+                        from: 'pratik.khadka18@gmail.com',
                         to: 'pratik.khadka18@gmail.com'
                     }
                     failure {
                         emailext attachLog: true,
                         body: 'Unit and Integration Tests failed. See attached logs.', 
                         subject: 'Unit and Integration Tests Failed', 
+                        from: 'pratik.khadka18@gmail.com',
                         to: 'pratik.khadka18@gmail.com'
                     }
                 }
@@ -50,12 +52,14 @@ pipeline {
                         emailext attachLog: true, 
                         body: 'Security Scan passed successfully.', 
                         subject: 'Security Scan Passed', 
+                        from: 'pratik.khadka18@gmail.com',
                         to: 'pratik.khadka18@gmail.com'
                     }
                     failure {
                         emailext attachLog: true, 
                         body: 'Security Scan failed. See attached logs.', 
                         subject: 'Security Scan Failed', 
+                        from: 'pratik.khadka18@gmail.com',
                         to: 'pratik.khadka18@gmail.com'
                     }
                 }
