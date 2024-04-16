@@ -12,15 +12,15 @@ pipeline {
                 echo 'Running unit and integration tests using Maven JUnit tests...'
             }
             post {
-                success{
+                success {
                     mail to: 'pratik.khadka18@gmail.com',
-                    subject: "Unit and Integration Test",
-                    body: "Unit and Integration Tests Completed Successfully"
+                    subject: "Build Success: ${currentBuild.fullDisplayName}",
+                    body: "Build Success for Unit and Integration Tests. Logs Available at: ${env.BUILD_URL} "
                 }
                 failure{
                     mail to: 'pratik.khadka18@gmail.com',
-                    subject: "Unit and Integration Test",
-                    body: "Unit and Integration Tests Failed"
+                    subject: "Build Failed: ${currentBuild.fullDisplayName}",
+                    body: "Build has Failed for Unit and Integration Tests. Logs Available at: ${env.BUILD_URL}"
                 }
             }
         }
@@ -38,15 +38,15 @@ pipeline {
                 echo 'Performing security scan using OWASP for Dependency Check...'
             }
             post {
-                success{
+                success {
                     mail to: 'pratik.khadka18@gmail.com',
-                    subject: "Security Scan",
-                    body: "Security Scan Completed Successfully"
+                    subject: "Build Success: ${currentBuild.fullDisplayName}",
+                    body: "Build Success for Security Scan. Logs Available at: ${env.BUILD_URL}"
                 }
                 failure{
                     mail to: 'pratik.khadka18@gmail.com',
-                    subject: "Security Scan",
-                    body: "Security Scan Failed"
+                    subject: "Build Failed: ${currentBuild.fullDisplayName}",
+                    body: "Build has Failed for Security Scan. Logs Available at: ${env.BUILD_URL}",
                 }
             }
         }
