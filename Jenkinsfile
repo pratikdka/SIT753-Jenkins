@@ -17,7 +17,7 @@ pipeline {
                 }
                 post {
                     always{
-                        to: "pratik.khadka18@gmail.com",
+                        mail to: "pratik.khadka18@gmail.com",
                         subject: "Unit and Integration Test Results",
                         body: "Log has been attached!!"
                     }
@@ -40,7 +40,7 @@ pipeline {
                 }
                 post {
                     always{
-                        to: "pratik.khadka18@gmail.com",
+                        mail to: "pratik.khadka18@gmail.com",
                         subject: "Security Scan Results",
                         body: "Log has been attached!!"
                     }
